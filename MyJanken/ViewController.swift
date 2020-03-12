@@ -23,8 +23,17 @@ class ViewController: UIViewController {
     
     @IBAction func shuffleAction(_ sender: Any) {
         
-        //0,1,2の数値をランダムに算出（乱数）
-        answerNumber = Int.random(in: 0..<3)
+        var newAnswerNumber = 0
+        
+        repeat {
+            
+            //0,1,2の間でランダムな数字を算出
+            newAnswerNumber = Int.random(in: 0..<3)
+            
+            //前回とは異なる結果の時、repeatを抜ける
+        } while answerNumber == newAnswerNumber
+        
+        answerNumber = newAnswerNumber
         
         if answerNumber == 0 {                          //グー
             answerLabel.text = "グー"
